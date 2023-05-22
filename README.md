@@ -17,7 +17,7 @@ $ pip install fastapi
 ```
 ````
 
-![Video_2023-05-22_160550_AdobeExpress](https://github.com/sxin0/docsify-termynal/assets/29392026/86865182-ab4a-41e3-9454-dc3ccff48553)
+![Video_2023-05-22_162348_AdobeExpress](https://github.com/sxin0/docsify-termynal/assets/29392026/6cbc0179-c27c-4c0d-9dc1-7f9993a1850a)
 
 
 ## Installation
