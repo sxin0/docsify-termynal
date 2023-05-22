@@ -1,4 +1,4 @@
-# docsify-tabs
+# docsify-termynal
 
 A [docsify.js](https://docsify.js.org) plugin for lightweight and modern animated terminal window from markdown.
 
