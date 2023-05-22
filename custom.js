@@ -21,7 +21,6 @@ function setupTermynal() {
                 const lines = text.split("\n");
                 const useLines = [];
                 let buffer = [];
-
                 function saveBuffer() {
                     if (buffer.length) {
                         let isBlankSpace = true;
@@ -150,5 +149,5 @@ async function showRandomAnnouncement(groupId, timeInterval) {
 }
 
 function beforeEach(content) {
-    return content.replace(/```term\n([\s\S]*?)\n```/g, '<code class="termy">\n$1\n</code>');
+    return content.replace(/```term\n([\s\S]*?)\n```/g, '\n<pre class="termy">$1</pre>');
 }
