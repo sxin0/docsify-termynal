@@ -149,5 +149,5 @@ async function showRandomAnnouncement(groupId, timeInterval) {
 }
 
 function beforeEach(content) {
-    return content.replace(/```term\n([\s\S]*?)\n```/g, '\n<pre class="termy">$1</pre>');
+    return content.replace(/```term[\r\n]([\s\S]*?)[\r\n]```/g, '\n<pre class="termy">$1</pre>');
 }
