@@ -3,6 +3,8 @@
 A [docsify.js](https://docsify.js.org) plugin for lightweight and modern animated terminal window from markdown.
 
 **Demo**
+> [https://wiki.jsx6.com/#/?id=docsify-termynal](https://wiki.jsx6.com/#/?id=docsify-termynal)
+
 ````
 ```term
 $ php -v
