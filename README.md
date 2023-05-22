@@ -5,8 +5,13 @@ A [docsify.js](https://docsify.js.org) plugin for lightweight and modern animate
 **Demo**
 ````
 ```term
-# 我是测试 (y/n) $ y
-// install fastapi
+$ php -v
+PHP 7.3.23 (cli) (built: Apr 20 2022 15:59:45) ( NTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.3.23, Copyright (c) 1998-2018 Zend Technologies
+
+# 这个一个选择 (y/n) $ y
+// 这是注释
 $ pip install fastapi
 >> 100%
 ```
