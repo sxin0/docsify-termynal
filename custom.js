@@ -53,7 +53,14 @@ function setupTermynal() {
                         });
                     } else if (line.startsWith(promptLiteralStart)) {
                         saveBuffer();
-                        const value = line.replace(promptLiteralStart, "").trimEnd();
+                        var value = line.replace(promptLiteralStart, "").trimEnd();
+                        value = value.replace(/^\s+/, function (match) {
+                            var spaces = '';
+                            for (var i = 0; i < match.length; i++) {
+                                spaces += '&nbsp;';
+                            }
+                            return spaces;
+                        })
                         useLines.push({
                             type: "input",
                             value: value
