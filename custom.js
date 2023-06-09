@@ -9,7 +9,7 @@ function setupTermynal() {
     });
     const progressLiteralStart = ">> 100%";
     const promptLiteralStart = "$ ";
-    const customPromptLiteralStart = "# ";
+    const customPromptLiteralStart = "## ";
     const termynalActivateClass = "termy";
     let termynals = [];
 
