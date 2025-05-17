@@ -114,3 +114,53 @@ window.$docsify = {
 以 [MIT License](./LICENSE) 授权。
 
 ---
+
+## Nginx 配置说明
+
+使用 Nginx 部署时，需要正确配置以支持 docsify 的路由系统。以下是推荐的配置：
+
+```nginx
+server {
+    listen       443 ssl http2;
+    server_name  your-domain.com;
+    
+    # SSL 配置
+    ssl_certificate     /path/to/your/cert.pem;
+    ssl_certificate_key /path/to/your/key.pem;
+    
+    root /path/to/your/docsify-termynal;
+    
+    location / {
+        add_header Cache-Control no-store;
+        index  index.html;
+        
+        # 处理目录访问
+        if (-d $request_filename) {
+            rewrite ^(.*)$ /index.html last;
+        }
+        
+        # 处理所有路由
+        try_files $uri $uri/ /index.html;
+    }
+    
+    # 缓存静态资源
+    location ~ .*\.(js|css)?$ {
+        expires 1h;
+    }
+    
+    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ {
+        expires 30d;
+    }
+    
+    # 禁止访问隐藏文件
+    location ~ /\.(?!well-known) {
+        deny all;
+    }
+}
+```
+
+需要注意的关键点：
+1. 所有目录访问都应该重定向到 `index.html`
+2. 静态资源应该适当缓存
+3. 隐藏文件（除了 `.well-known`）应该被禁止访问
+4. 生产环境建议配置 SSL

@@ -12,6 +12,8 @@
 ##  Demo
 
 > [https://wiki.jsx6.com/#/?id=docsify-termynal](https://wiki.jsx6.com/#/?id=docsify-termynal)
+> <br>
+> > [https://docs.jsx6.com](https://docs.jsx6.com) (deployed from the latest code on the main branch)
 
 ```term
 $ php -v
@@ -104,6 +106,58 @@ below is a complete usage example
 </body>
 </html>
 ```
+
+---
+
+## Nginx Configuration
+
+When deploying with Nginx, you need to configure it properly to handle docsify's routing system. Here's a recommended configuration:
+
+```nginx
+server {
+    listen       443 ssl http2;
+    server_name  your-domain.com;
+    
+    # SSL configuration
+    ssl_certificate     /path/to/your/cert.pem;
+    ssl_certificate_key /path/to/your/key.pem;
+    
+    root /path/to/your/docsify-termynal;
+    
+    location / {
+        add_header Cache-Control no-store;
+        index  index.html;
+        
+        # Handle directory access
+        if (-d $request_filename) {
+            rewrite ^(.*)$ /index.html last;
+        }
+        
+        # Handle all routes
+        try_files $uri $uri/ /index.html;
+    }
+    
+    # Cache static assets
+    location ~ .*\.(js|css)?$ {
+        expires 1h;
+    }
+    
+    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ {
+        expires 30d;
+    }
+    
+    # Deny access to hidden files
+    location ~ /\.(?!well-known) {
+        deny all;
+    }
+}
+```
+
+Key points to note:
+1. All directory access should be redirected to `index.html`
+2. Static assets should be cached appropriately
+3. Hidden files (except `.well-known`) should be denied
+4. SSL configuration is recommended for production use
 
 ---
 

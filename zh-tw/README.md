@@ -107,6 +107,56 @@ window.$docsify = {
 
 ---
 
+## Nginx 設定說明
+
+使用 Nginx 部署時，需要正確設定以支援 docsify 的路由系統。以下是建議的設定：
+
+```nginx
+server {
+    listen       443 ssl http2;
+    server_name  your-domain.com;
+    
+    # SSL 設定
+    ssl_certificate     /path/to/your/cert.pem;
+    ssl_certificate_key /path/to/your/key.pem;
+    
+    root /path/to/your/docsify-termynal;
+    
+    location / {
+        add_header Cache-Control no-store;
+        index  index.html;
+        
+        # 處理目錄存取
+        if (-d $request_filename) {
+            rewrite ^(.*)$ /index.html last;
+        }
+        
+        # 處理所有路由
+        try_files $uri $uri/ /index.html;
+    }
+    
+    # 快取靜態資源
+    location ~ .*\.(js|css)?$ {
+        expires 1h;
+    }
+    
+    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ {
+        expires 30d;
+    }
+    
+    # 禁止存取隱藏檔案
+    location ~ /\.(?!well-known) {
+        deny all;
+    }
+}
+```
+
+需要注意的關鍵點：
+1. 所有目錄存取都應該重定向到 `index.html`
+2. 靜態資源應該適當快取
+3. 隱藏檔案（除了 `.well-known`）應該被禁止存取
+4. 生產環境建議設定 SSL
+
 ## 授權
 
 根據 [MIT 許可證](./LICENSE) 授權。
