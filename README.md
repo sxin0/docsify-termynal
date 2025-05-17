@@ -11,9 +11,7 @@
 
 ##  Demo
 
-> [https://wiki.jsx6.com/#/?id=docsify-termynal](https://wiki.jsx6.com/#/?id=docsify-termynal)
-> <br>
-> > [https://docs.jsx6.com](https://docs.jsx6.com) (deployed from the latest code on the main branch)
+> [https://docs.jsx6.com](https://docs.jsx6.com) (deployed from the latest code on the main branch)
 
 ```term
 $ php -v

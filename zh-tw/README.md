@@ -11,7 +11,7 @@
 
 ## 演示
 
-[線上演示](https://wiki.jsx6.com/#/?id=docsify-termynal)
+[線上演示](https://docs.jsx6.com)
 
 ```term
 $ php -v
