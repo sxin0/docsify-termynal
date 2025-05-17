@@ -1,66 +1,112 @@
 # docsify-termynal
 
-A [docsify.js](https://docsify.js.org) plugin for lightweight and modern animated terminal window from markdown.
+[![License](https://img.shields.io/github/license/sxin0/docsify-termynal)](./LICENSE)
+[![Contributors](https://img.shields.io/github/contributors/sxin0/docsify-termynal)](https://github.com/sxin0/docsify-termynal/graphs/contributors)
+[![Issues](https://img.shields.io/github/issues/sxin0/docsify-termynal)](https://github.com/sxin0/docsify-termynal/issues)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](http://makeapullrequest.com)
 
-**Demo**
+>  A [Docsify](https://docsify.js.org) plugin to render modern animated terminal blocks from markdown.
+
+---
+
+##  Demo
+
 > [https://wiki.jsx6.com/#/?id=docsify-termynal](https://wiki.jsx6.com/#/?id=docsify-termynal)
 
-````
 ```term
 $ php -v
-PHP 7.3.23 (cli) (built: Apr 20 2022 15:59:45) ( NTS )
-Copyright (c) 1997-2018 The PHP Group
-Zend Engine v3.3.23, Copyright (c) 1998-2018 Zend Technologies
-
-# 这个一个选择 (y/n) $ y
-// 这是注释
+PHP 7.3.23 (cli) (built: Apr 20 2022 15:59:45)
 $ pip install fastapi
 >> 100%
+# Choose an option (y/n)
+$ y
+// This is a comment
 ```
-````
 
-![Video_2023-05-22_162348_AdobeExpress](https://github.com/sxin0/docsify-termynal/assets/29392026/6cbc0179-c27c-4c0d-9dc1-7f9993a1850a)
+![Demo](https://github.com/sxin0/docsify-termynal/assets/29392026/6cbc0179-c27c-4c0d-9dc1-7f9993a1850a)
 
+---
 
-## Installation
+##  Installation
+
+### Via CDN [jsdelivr.com](https://www.jsdelivr.com/)
+
+```html
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sxin0/docsify-termynal@main/dist/css/termynal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sxin0/docsify-termynal@main/dist/css/custom.css">
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/gh/sxin0/docsify-termynal@main/dist/js/termynal.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/sxin0/docsify-termynal@main/dist/js/custom.js"></script>
+```
+
+---
+
+##  Configuration
+
+Add the following configuration into window.$docsify:
+
+```js
+window.$docsify = {
+  // ...
+  plugins: [
+    function (hook, vm) {
+      hook.beforeEach(content => beforeEach(content));
+      hook.doneEach(() => {
+        setupTermynal();
+        showRandomAnnouncement('announce-left', 5000);
+        showRandomAnnouncement('announce-right', 10000);
+      });
+    }
+  ]
+};
+```
+
+## Full usage example
+
+below is a complete usage example
+
 ```html
 <!DOCTYPE html>
 <html>
 <head>
-    <!--docsify-->
-    <!--...-->
-    
-    <!--termynal.js-->
-    <link rel="stylesheet" href="termynal.css">
-    <link rel="stylesheet" href="custom.css">
+<link 
+    rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/gh/sxin0/docsify-termynal@main/dist/css/custom.css" 
+/>
+<link 
+    rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/gh/sxin0/docsify-termynal@main/dist/css/termynal.css" 
+/>
 </head>
 <body>
-<div id="app"></div>
-<script>
+  <div id="app"></div>
+
+  <script>
     window.$docsify = {
-        /*...*/
-        plugins: [
-            function (hook, vm) {
-                /*termynal.js*/
-                hook.beforeEach(function(content){
-                    return beforeEach(content);
-                })
-                hook.doneEach(function (){
-                    setupTermynal();
-                    showRandomAnnouncement('announce-left', 5000)
-                    showRandomAnnouncement('announce-right', 10000)
-                });
-            }
-        ]
-    }
-</script>
+      // ...
+      plugins: [
+        function (hook, vm) {
+          hook.beforeEach(content => beforeEach(content));
+          hook.doneEach(() => {
+            setupTermynal();
+            showRandomAnnouncement('announce-left', 5000);
+            showRandomAnnouncement('announce-right', 10000);
+          });
+        }
+      ]
+    };
+  </script>
 
-<!--docsify-->
-<!--...-->
-
-<!--termynal.js-->
-<script src="termynal.js"></script>
-<script src="custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/sxin0/docsify-termynal@main/dist/js/termynal.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/sxin0/docsify-termynal@main/dist/js/custom.js"></script>
 </body>
 </html>
 ```
+
+---
+
+##  License
+
+Licensed under the [MIT License](./LICENSE).

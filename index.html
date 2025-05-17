@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Docsify Termynal</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify/lib/themes/pure.css" />
+  <link rel="stylesheet" href="./plugins/docsify-theme-like-a-txt/txt-docsifytheme.css" />
+  <link rel="stylesheet" href="./plugins/alert-like-a-txt/txtalertstyle.css" />
+  <link rel="stylesheet" href="/dist/css/custom.css" />
+  <link rel="stylesheet" href="/dist/css/termynal.css" />
+</head>
+
+<body>
+  <div id="lang-switcher" title="Change Language" aria-label="Change Language" style="margin: 10px;">
+    <span style="cursor:pointer;" onclick="toggleLangMenu()">🌐</span>
+    <select id="lang-select" onchange="changeLang(this.value)" style="display:none; margin-left: 8px;">
+      <option value="">Select Lang</option>
+      <option value="/#/">English</option>
+      <option value="/zh-cn/">繁體中文</option>
+      <option value="/zh-tw/">电视</option>
+    </select>
+  </div>
+
+  <div id="app"></div>
+
+  <script>
+    function changeLang(lang) {
+      if (!lang) return;
+      // Redirect to lang URL, special case for root '/'
+      if (lang === "/#/" || lang === "/") {
+        window.location.href = window.location.origin + "/#/";
+      } else {
+        window.location.href = window.location.origin + lang;
+      }
+    }
+
+    function toggleLangMenu() {
+      const select = document.getElementById("lang-select");
+      if (select.style.display === "none" || select.style.display === "") {
+        select.style.display = "inline-block";
+        select.focus();
+      } else {
+        select.style.display = "none";
+      }
+    }
+  </script>
+
+  <script>
+    window.$docsify = {
+      name: "docsify-termynal",
+      repo: "https://github.com/sxin0/docsify-termynal",
+      loadSidebar: true,
+      subMaxLevel: 3,
+      loadFooter: true,
+      sidebarDisplayLevel: 1,
+      themeColor: "#0366d6",
+      alias: {
+        "/zh-cn/.*/_sidebar.md": "/zh-cn/_sidebar.md",
+        "/zh-cn/.*/_footer.md": "/zh-cn/_footer.md",
+        "/zh-cn/.*/README.md": "/zh-cn/README.md",
+        "/zh-cn/.*/404.md": "/zh-cn/404.md",
+
+        "/zh-tw/.*/_sidebar.md": "/zh-tw/_sidebar.md",
+        "/zh-tw/.*/_footer.md": "/zh-tw/_footer.md",
+        "/zh-tw/.*/README.md": "/zh-tw/README.md",
+        "/zh-tw/.*/404.md": "/zh-tw/404.md",
+
+        "/.*/_sidebar.md": "/_sidebar.md",
+        "/.*/_footer.md": "/_footer.md",
+        "/.*/README.md": "/README.md",
+        "/.*/404.md": "/404.md",
+      },
+      fallbackLanguages: ["/", "/zh-cn/", "/zh-tw/"],
+      notFoundPage: true,
+      search: {
+        maxAge: 86400000,
+        paths: "auto",
+        placeholder: "🔍 Search...",
+        noData: "No results found.",
+        depth: 3,
+      },
+      markdown: {
+        renderer: {
+          code: function (code, lang) {
+            if (lang === "term") {
+              const lines = code
+                .split("\n")
+                .filter((line) => line.trim() !== "")
+                .map((line) => {
+                  if (line.startsWith("$ ")) {
+                    return `<span data-ty="input">${line.replace(/^\$\s*/, "")}</span>`;
+                  } else {
+                    return `<span data-ty>${line}</span>`;
+                  }
+                })
+                .join("\n");
+
+              return `<div data-termynal>\n${lines}\n</div>`;
+            }
+            return this.origin.code.apply(this, arguments);
+          },
+        },
+      },
+      plugins: [
+        function (hook, vm) {
+          hook.beforeEach(function (content) {
+            return beforeEach ? beforeEach(content) : content;
+          });
+          hook.doneEach(function () {
+            if (typeof setupTermynal === "function") setupTermynal();
+            if (typeof showRandomAnnouncement === "function") {
+              showRandomAnnouncement("announce-left", 5000);
+              showRandomAnnouncement("announce-right", 10000);
+            }
+          });
+        },
+        function (hook) {
+          hook.ready(function () {
+            const path = location.hash;
+            const is404 = document.querySelector(".app-name")?.textContent.includes("404");
+            if (is404 && path.includes("/zh-cn/")) {
+              window.location.href = "#/zh-cn/404";
+            } else if (is404 && path.includes("/zh-tw/")) {
+              window.location.href = "#/zh-tw/404";
+            } else if (is404) {
+              window.location.href = "#/404";
+            }
+          });
+        },
+      ],
+    };
+  </script>
+
+  <!-- Docsify core -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+
+  <!-- Plugins -->
+  <script src="/dist/js/termynal.js"></script>
+  <script src="/dist/js/custom.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@alertbox/docsify-footer@1.0.0-0/dist/docsify-footer.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="/plugins/alert-like-a-txt/txtalertstyle.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll("[data-termynal]").forEach((container) => {
+        new Termynal(container);
+      });
+    });
+  </script>
+</body>
+
+</html>
