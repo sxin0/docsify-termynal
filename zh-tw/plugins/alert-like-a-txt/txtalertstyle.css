@@ -1,0 +1,50 @@
+/**
+ * simple allert
+ *
+ * @author openpineaple <openpineaple@gmail.com>
+ * @version 0.0.1
+ * @license MIT
+ */
+
+.txt-alert {
+  font-family: monospace;
+  border: 4px solid #999;
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  background: transparent;
+  color: #333;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+.txt-note {
+  border-color: #80dbf1;
+}
+
+.txt-warning {
+  border-color: #eef111;
+}
+
+.txt-danger {
+  border-color: #ff0000;
+}
+
+.txt-tip {
+  border-color: #00cc44;
+}
+
+.txt-info {
+  border-color: #3399ff;
+}
+
+.txt-success {
+  border-color: #66cc66;
+}
+
+.txt-question {
+  border-color: #cc66ff;
+}
+
+.txt-hint {
+  border-color: #ff99cc;
+}

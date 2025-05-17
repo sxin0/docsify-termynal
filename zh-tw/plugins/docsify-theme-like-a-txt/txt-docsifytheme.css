@@ -1,0 +1,182 @@
+/**
+ * txt theme
+ *
+ * @author openpineaple <openpineaple@gmail.com>
+ * @version 0.0.1
+ * @license MIT
+ */
+
+body,
+.content,
+.markdown-section {
+    font-family: monospace !important;
+    color: black !important;
+    background: white !important;
+    line-height: 1.4 !important;
+    white-space: pre-wrap !important;
+    margin: 1em 1.5em !important;
+    padding: 0 !important;
+}
+
+.app-nav,
+.sidebar {
+    font-family: monospace !important;
+    color: black !important;
+    background: white !important;
+    border: none !important;
+    padding: 0.5em 1em !important;
+}
+
+.app-nav a,
+.sidebar-nav a {
+    font-family: monospace !important;
+    color: black !important;
+    background: transparent !important;
+    text-decoration: none !important;
+    cursor: pointer;
+    border: none !important;
+    padding: 0.2em 0.4em !important;
+    margin: 0 !important;
+    display: inline-block;
+}
+
+.sidebar-nav a.active,
+.sidebar-nav a:hover,
+.app-nav a:hover {
+    text-decoration: underline !important;
+    color: black !important;
+    background: transparent !important;
+}
+
+.sidebar-nav ul {
+    list-style: none !important;
+    padding-left: 1.5em !important;
+    margin: 0.5em 0 !important;
+}
+
+.markdown-section {
+    font-family: monospace !important;
+    color: black !important;
+    background: white !important;
+    white-space: pre-wrap !important;
+    margin: 0 !important;
+    padding: 1em 0 !important;
+}
+
+.markdown-section h1 {
+    font-size: 2em !important;
+    font-weight: bold !important;
+    color: #222 !important;
+    margin: 0.8em 0 0.4em 0 !important;
+}
+
+.markdown-section h2 {
+    font-size: 1.75em !important;
+    font-weight: bold !important;
+    color: #333 !important;
+    margin: 0.7em 0 0.35em 0 !important;
+}
+
+.markdown-section h3 {
+    font-size: 1.5em !important;
+    font-weight: bold !important;
+    color: #444 !important;
+    margin: 0.6em 0 0.3em 0 !important;
+}
+
+.markdown-section h4 {
+    font-size: 1.25em !important;
+    font-weight: bold !important;
+    color: #555 !important;
+    margin: 0.5em 0 0.25em 0 !important;
+}
+
+.markdown-section h5 {
+    font-size: 1.1em !important;
+    font-weight: bold !important;
+    color: #666 !important;
+    margin: 0.4em 0 0.2em 0 !important;
+}
+
+.markdown-section h6 {
+    font-size: 1em !important;
+    font-weight: bold !important;
+    color: #777 !important;
+    margin: 0.3em 0 0.15em 0 !important;
+}
+
+.markdown-section strong,
+.markdown-section em,
+.markdown-section blockquote {
+    all: unset;
+    font-family: monospace !important;
+    color: black !important;
+    background: white !important;
+    white-space: pre-wrap !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    margin: 0.5em 0 !important;
+}
+
+.markdown-section ul,
+.markdown-section ol {
+    list-style: none !important;
+    padding-left: 1.5em !important;
+    margin: 0.5em 0 !important;
+}
+
+.markdown-section table,
+.markdown-section th,
+.markdown-section td {
+    border: none !important;
+    padding: 0.3em 0.5em !important;
+    margin: 0 !important;
+    background: white !important;
+    color: black !important;
+    white-space: pre-wrap !important;
+}
+
+.footer {
+    font-family: monospace !important;
+    color: black !important;
+    background: white !important;
+    padding: 0.5em 1em !important;
+    margin: 1em 0 0 0 !important;
+}
+
+hr {
+    margin: 0.5em 0 !important;
+    border: none !important;
+    border-top: 1px solid black !important;
+}
+
+.markdown-section pre {
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+    padding: 0.8em 1em !important;
+    background-color: #f9f9f9 !important;
+    overflow-x: auto !important;
+}
+
+#lang-switcher {
+  position: fixed;
+  top: 10px;      
+  left: 1150px;     
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  user-select: none;
+  z-index: 1000;  
+  display: flex;
+  align-items: center;
+  background: transparent;
+}
+
+#lang-switcher select {
+  font-size: 14px;
+  padding: 2px 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+}
