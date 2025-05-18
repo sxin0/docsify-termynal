@@ -1,0 +1,55 @@
+{
+  "name": "docsify-termynal",
+  "version": "1.0.0",
+  "description": "[![License](https://img.shields.io/github/license/sxin0/docsify-termynal)](./LICENSE) [![Contributors](https://img.shields.io/github/contributors/sxin0/docsify-termynal)](https://github.com/sxin0/docsify-termynal/graphs/contributors) [![Issues](https://img.shields.io/github/issues/sxin0/docsify-termynal)](https://github.com/sxin0/docsify-termynal/issues) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](http://makeapullrequest.com)",
+  "main": "index.js",
+  "scripts": {
+    "lint:js": "eslint . --ext .js -f json -o output/lint/js-lint.json",
+    "lint:css": "stylelint '**/*.css' --formatter json --output-file output/lint/css-lint.json",
+    "lint:html": "htmlhint '**/*.html' > output/lint/html-lint.txt || true",
+    "lint:md": "markdownlint '**/*.md' -o output/lint/md-lint.txt",
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:html && npm run lint:md",
+    "test:coverage": "nyc --report-dir=output/coverage --reporter=html --reporter=text node run_all.js",
+    "format": "prettier --write '**/*.{js,css,html,md}'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sxin0/docsify-termynal.git"
+  },
+  "keywords": [],
+  "author": "sxin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sxin0/docsify-termynal/issues"
+  },
+  "homepage": "https://github.com/sxin0/docsify-termynal#readme",
+  "devDependencies": {
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "nyc": "^17.1.0",
+    "stylelint-config-standard": "^38.0.0"
+  },
+  "presets": [
+    "@babel/preset-env"
+  ],
+  "nyc": {
+    "all": true,
+    "include": [
+      "**/*.js"
+    ],
+    "exclude": [
+      "node_modules/**",
+      "output/**"
+    ],
+    "check-coverage": true,
+    "lines": 100,
+    "functions": 100,
+    "branches": 100,
+    "statements": 100
+  }
+}
