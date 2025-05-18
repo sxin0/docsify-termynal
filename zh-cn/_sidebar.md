@@ -1,4 +1,4 @@
-- [快速入門](/)
-- [行為準則](/CODE_OF_CONDUCT.md)
-- [貢獻](/CONTRIBUTING.md)
-- [版權宣告](/LICENSE.md)
+- [快速入門](/zh-cn/)
+- [行為準則](/zh-cn/CODE_OF_CONDUCT.md)
+- [貢獻](/zh-cn/CONTRIBUTING.md)
+- [版權宣告](/zh-cn/LICENSE.md)

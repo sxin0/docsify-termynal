@@ -1,4 +1,4 @@
-- [快速入门](/)
-- [行为准则](/CODE_OF_CONDUCT.md)
-- [贡献](/CONTRIBUTING.md)
-- [许可证](/LICENSE.md)
+- [快速入门](/zh-tw/)
+- [行为准则](/zh-tw/CODE_OF_CONDUCT.md)
+- [贡献](/zh-tw/CONTRIBUTING.md)
+- [许可证](/zh-tw/LICENSE.md)
