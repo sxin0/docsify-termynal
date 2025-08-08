@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sxin0/docsify-termynal@main/dist/css/termynal.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sxin0/docsify-termynal@main/dist/css/custom.css">
+  <link rel="stylesheet" href="./plugins/ai-chatbot/ai-chatbot.css">
   <title>Docsify Termynal</title>
 </head>
 <div id='app'></div>
@@ -58,6 +59,19 @@
       noData: 'No results found.',
       depth: 3,
     },
+    // AI聊天机器人配置
+    aiChatbot: {
+      apiKey: '11111', // 请在这里填入你的OpenAI API Key
+      apiEndpoint: 'https://api.openai.com/v1/chat/completions',
+      model: 'gpt-3.5-turbo',
+      maxTokens: 1000,
+      temperature: 0.7,
+      position: 'bottom-right',
+      theme: 'light',
+      language: 'zh-CN',
+      placeholder: '有什么问题吗？',
+      welcomeMessage: '你好！我是AI助手，有什么可以帮助你的吗？'
+    },
     plugins: [
       function (hook, vm) {
         hook.beforeEach(function (content) {
@@ -103,6 +117,7 @@
 <script src='//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/@alertbox/docsify-footer@1.0.0-0/dist/docsify-footer.min.js'></script>
 <script src='//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js'></script>
+<script src='./plugins/ai-chatbot/ai-chatbot.js'></script>
 </body>
 
 </html>
